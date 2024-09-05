@@ -1,5 +1,6 @@
 const express = require('express');
 const { Manufacturer, Product } = require('../db/models/productModel');
+const path = require('path');
 const router = express.Router();
 
 router.get("/manufacturers", async (req, res) => {
@@ -71,6 +72,32 @@ router.get("/products/total-value-by-manufacturer", async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Error calculating total value of products by manufacturer" });
+    }
+})
+
+router.get("/products/critical-stock", async (req, res) => {
+    try {
+        const products = await Product.find({ amountInStock: { $lt: 5 } })
+            .populate({
+                path: 'manufacturer',
+                select: 'name contact',
+            });
+        const compactProducts = products.map(product => ({
+            productName: product.name,
+            manufacturer: {
+                name: product.manufacturer.name,
+                contact: {
+                    name: product.manufacturer.contact.name,
+                    phone: product.manufacturer.contact.phone,
+                    email: product.manufacturer.contact.email
+                }
+            }
+        }));
+        res.status(200).json(compactProducts);
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Error fetching critical low stock products" });
     }
 })
 

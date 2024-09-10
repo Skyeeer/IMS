@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./db/models/graphSchema');
 
 const productRouter = require("./db/routes/productRouter");
 const manufacturerRouter = require("./db/routes/manufacturerRouter");
@@ -13,9 +15,13 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
     .catch((error) => console.error("MongoDB connection error:", error));
 
 app.use(express.json());
-app.use("/products", productRouter);
-app.use("/manufacturers", manufacturerRouter);
+// app.use("/products", productRouter);
+// app.use("/manufacturers", manufacturerRouter);
 
+app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    graphiql: true
+}));
 
 app.get("/", (req, res) => {
     res.send("Hello World")

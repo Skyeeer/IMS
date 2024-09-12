@@ -29,5 +29,8 @@ const productSchema = new mongoose.Schema({
 const Manufacturer = mongoose.model('Manufacturer', manufacturerSchema);
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Manufacturer, Product };
+const Contact = mongoose.model('Contact', contactSchema);
+
+
+module.exports = { Manufacturer, Product, Contact };
 

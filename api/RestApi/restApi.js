@@ -7,10 +7,10 @@ const express = require('express');
 function restApi(){
     const app = express();
 
-    const productRouter = require("../db/routes/productRouter");
-    const manufacturerRouter = require("../db/routes/manufacturerRouter");
+    const productRouter = require("../../db/routes/productRouter");
+    const manufacturerRouter = require("../../db/routes/manufacturerRouter");
 
-    const PORT = process.env.PORT || 3000;
+    const PORT = 3000;
 
     mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster01.8ffgk.mongodb.net/IMSdb?retryWrites=true&w=majority`)
         .then(() => console.log("MongoDB connected"))

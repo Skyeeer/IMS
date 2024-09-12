@@ -14,20 +14,30 @@ const typeDefs = `#graphql
         contact: contact
     }
     type product {
-
         name:String,
         sku: String,
         description: String,
-        price: Int,
+        price: Float,
         category: String,
         manufacturer: manufacturer,
         amountInStock: Int
     }
+    type totalValueByManufacturer {
+        totalValue: Float,
+        manufacturer: String
+    }
+    type totalValue{
+        totalValue: Float
+    }
+
     type Query{
         findManufacturers: [manufacturer]
+        findManufacturer(id:ID): manufacturer
         findProducts: [product]
         findProduct(id:ID): product
         findLowStockProducts(threshold:Int):[product]
+        findTotalValueByManufacturer:[totalValueByManufacturer]
+        calculateTotalStockValue: totalValue
     }
    
 `

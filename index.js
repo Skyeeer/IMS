@@ -1,5 +1,5 @@
-const {restApi}= require('./api/restApi')
+const {restApi}= require('./api/RestApi/restApi')
 const {graphqlApi}= require('./api/Graphql/graphql')
-//restApi()
+restApi()
 graphqlApi()
 

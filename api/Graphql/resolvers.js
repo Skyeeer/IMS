@@ -5,7 +5,10 @@ const resolvers = {
         findProducts,
         findProduct,
         findManufacturers,
-        findLowStockProducts
+        findLowStockProducts,
+        findTotalValueByManufacturer,
+        findManufacturer,
+        calculateTotalStockValue
     }
 }
 

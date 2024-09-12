@@ -5,7 +5,7 @@ const { createProduct, findProduct, findProducts, updateProduct, deleteProduct, 
 const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer } = require('../crud/manufacturerCrud');
 const { Manufacturer } = require('../models/productModel');
 
-// Типы данных
+
 const ManufacturerType = new GraphQLObjectType({
   name: 'Manufacturer',
   fields: () => ({
@@ -51,7 +51,7 @@ const ProductType = new GraphQLObjectType({
   })
 });
 
-// Запросы
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -109,7 +109,7 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
-// Мутации
+
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -204,7 +204,6 @@ const Mutation = new GraphQLObjectType({
   }
 });
 
-// Экспорт схемы
 module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation

@@ -13,6 +13,7 @@ const manufacturerSchema = new mongoose.Schema({
     description: { type: String, required: true },
     address: { type: String, required: true },
     contact: contactSchema,
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 });
 
 

@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { GET_ALL_PRODUCTS } from "../queries/productQueries.js";
 import { Link } from "react-router-dom";
+import styles from "../styles/Products.module.css"
 
 const ProductList = () => {
   console.log("GET_ALL_PRODUCTS", GET_ALL_PRODUCTS);
@@ -30,17 +31,17 @@ const ProductList = () => {
     return (
       <div>
         <h2>Product List</h2>
-        <ul className="products-list">
+        <ul className={styles["products-list"]}>
           {data.products.map((product) => (
-            <li className="products-list-item" key={product.id}>
+            <Link style={{textDecoration: "none", color: "white"}} to={`/products/${product.id}`}>
+            <li className={styles["products-list-item"]} key={product.id}>
               <p><strong>{product.name}</strong></p>
               <p>Price: {product.price} $</p>
-              <p>Sku: {product.sku}</p>
               <p>Category: {product.category}</p>
-              <p>Description: {product.description}</p>
               <p>Manufacturer: {product.manufacturer.name}</p>
-              <p>Amount: {product.amountInStock}</p>
+              
             </li>
+            </Link>
           ))}
         </ul>
 

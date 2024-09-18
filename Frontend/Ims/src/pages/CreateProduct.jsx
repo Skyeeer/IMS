@@ -42,7 +42,7 @@ const ProductForm = () => {
         },
       });
 
-      // Очистка полей и ошибок
+     
       setName("");
       setSku("");
       setCategory("");

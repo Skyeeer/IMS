@@ -72,7 +72,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(new GraphQLObjectType({
         name: 'ManufacturerTotalValue',
         fields: {
-          manufacturer: { type: ManufacturerType },
+          manufacturer: { type: GraphQLString },
           totalValue: { type: GraphQLFloat }
         }
       })),

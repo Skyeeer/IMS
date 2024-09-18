@@ -8,6 +8,7 @@ export default function Navbar() {
             <Link to="/">Home</Link>
             <Link to="/products">Shop</Link>
             <Link to="/manufacturers">Brands</Link>
+            <Link to="/createproduct">New Product</Link>
         </nav>
     )
 }

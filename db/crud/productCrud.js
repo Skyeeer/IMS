@@ -45,9 +45,16 @@ const findTotalValueByManufacturer = async () => {
         },
         {
             $project: {
-                manufacturer: '$manufacturerDetails.name',  // Show the manufacturer name first
-                totalValue: 1,  // Show the total value second
-                _id: 1  // Keep the ObjectId (manufacturer's _id) as the last field
+                manufacturer: {
+                    _id: '$manufacturerDetails._id',
+                    name: '$manufacturerDetails.name',
+                    country: '$manufacturerDetails.country',
+                    website: '$manufacturerDetails.website',
+                    description: '$manufacturerDetails.description',
+                    contact: '$manufacturerDetails.contact'
+                },
+                totalValue: 1,
+                _id: 1
             }
         }
     ]);

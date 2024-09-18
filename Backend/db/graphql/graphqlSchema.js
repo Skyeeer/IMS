@@ -1,6 +1,6 @@
 
 const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLList, GraphQLID, GraphQLNonNull } = require('graphql');
-const {GraphQLInputObjectType} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 const { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../crud/productCrud');
 const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer } = require('../crud/manufacturerCrud');
 const { Manufacturer } = require('../models/productModel');
@@ -15,7 +15,7 @@ const ManufacturerType = new GraphQLObjectType({
     website: { type: GraphQLString },
     description: { type: GraphQLString },
     address: { type: GraphQLString },
-    contact: { 
+    contact: {
       type: new GraphQLObjectType({
         name: 'ManufacturerContactInput',
         fields: {
@@ -186,7 +186,7 @@ const Mutation = new GraphQLObjectType({
         address: { type: GraphQLString },
         contact: { type: ManufacturerContactInputType }
       },
-      resolve: async (_, { id,...updateData }) => {
+      resolve: async (_, { id, ...updateData }) => {
         const updatedManufacturer = await updateManufacturer(id, updateData);
         if (!updatedManufacturer) throw new Error('Manufacturer not found');
         return updatedManufacturer;

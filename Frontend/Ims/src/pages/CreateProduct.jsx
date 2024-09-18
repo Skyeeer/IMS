@@ -1,12 +1,12 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries'; 
+import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries';
 import { CREATE_PRODUCT } from '../mutations/productMutation';
 
 const ProductForm = () => {
   const { data: manufacturersData, loading: manufacturersLoading, error: manufacturersError } = useQuery(GET_ALL_MANUFACTURERS);
   const [createProduct, { loading: createProductLoading, error: createProductError }] = useMutation(CREATE_PRODUCT);
-  
+
   const [name, setName] = useState('');
   const [sku, setSku] = useState('');
   const [category, setCategory] = useState('');
@@ -37,12 +37,12 @@ const ProductForm = () => {
           category,
           description,
           price: parseFloat(price),
-          amount: parseInt(amount, 10),
+          amountInStock: parseInt(amount, 10),
           manufacturer: selectedManufacturer,
         },
       });
 
-     
+
       setName("");
       setSku("");
       setCategory("");
@@ -81,36 +81,36 @@ const ProductForm = () => {
       </div>
       <div>
         <label>Description:</label>
-        <textarea 
-          value={description} 
+        <textarea
+          value={description}
           placeholder="Description of the product"
-          onChange={(e) => setDescription(e.target.value)} required 
+          onChange={(e) => setDescription(e.target.value)} required
         />
       </div>
       <div>
         <label>Price:</label>
-        <input 
-          type="number" 
-          value={price} 
-          onChange={(e) => setPrice(e.target.value)} 
-          required 
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
         />
         <span>USD</span>
       </div>
       <div>
         <label>Amount:</label>
-        <input 
-          type="number" 
-          value={amount} 
-          onChange={(e) => setAmount(e.target.value)} 
-          required 
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          required
         />
       </div>
       <div>
         <label>Manufacturer:</label>
-        <select 
-          value={selectedManufacturer} 
-          onChange={(e) => setSelectedManufacturer(e.target.value)} 
+        <select
+          value={selectedManufacturer}
+          onChange={(e) => setSelectedManufacturer(e.target.value)}
           required
         >
           <option value="">Select a manufacturer</option>

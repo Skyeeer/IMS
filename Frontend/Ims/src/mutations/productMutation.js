@@ -16,7 +16,7 @@ export const CREATE_PRODUCT = gql`
       price: $price,
       description: $description,
       manufacturer: $manufacturer,
-      amountInStock: $amountInstock,
+      amountInStock: $amountInStock,
       category: $category,
     ) {
       id

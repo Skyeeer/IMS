@@ -1,0 +1,19 @@
+.products-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .products-list-item {
+    width: 200px;
+    padding: 10px;
+    background-color: #888888;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    color: rgb(13, 13, 37);
+  }
+  .products-list-item:hover {
+    background-color:transparent;
+    color: white;
+    border: 1px solid gray;
+  }

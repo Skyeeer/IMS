@@ -1,5 +1,5 @@
 const express = require('express');
-const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer } = require('../crud/manufacturerCrud');
+const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer } = require('../../../db/crud/manufacturerCrud');
 const router = express.Router();
 
 // Create a new manufacturer

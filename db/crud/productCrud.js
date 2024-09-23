@@ -1,14 +1,16 @@
 const { Product } = require("../models/productModel");
 
 // Create and save a new product
-const createProduct = async (product) => {
-    const newProduct = new Product(product);
+const createProduct = async (parent,args) => {
+    const newProduct = new Product(args==undefined?parent:args.newProduct);
     return await newProduct.save();
 };
 
 // Find a single product by its ID, including manufacturer details
-const findProduct = async (id) => {
-    return await Product.findById(id).populate('manufacturer');
+const findProduct = async (parent,args) => {
+
+    return await Product.findById(args==undefined?parent:args.id).populate('manufacturer');
+    
 };
 
 // Find all products, including manufacturer details
@@ -17,8 +19,10 @@ const findProducts = async () => {
 };
 
 //Find products with less than a certain amount in stock
-const findLowStockProducts = async (threshold) => {
-    return await Product.find({ amountInStock: { $lt: threshold } }).populate('manufacturer');
+const findLowStockProducts = async (parent,args) => {
+
+ return await Product.find({ amountInStock: { $lt: args==undefined?parent:args.threshold } }).populate('manufacturer');
+    
 };
 
 //Find total value of of products by manufacturer
@@ -55,19 +59,22 @@ const findTotalValueByManufacturer = async () => {
 };
 
 // Update an existing product by its ID 
-const updateProduct = async (id, product) => {
-    return await Product.findByIdAndUpdate(id, product, { new: true }).populate('manufacturer');
+const updateProduct = async (parent, args) => {
+    return await Product.findByIdAndUpdate(typeof parent==String?parent:args.id, typeof parent==String?args:args.product, { new: true }).populate('manufacturer');
 };
 
 // Delete a product by its ID
-const deleteProduct = async (id) => {
-    return await Product.findByIdAndDelete(id);
+const deleteProduct = async (parent,args) => {
+    return await Product.findByIdAndDelete(args==undefined?parent:args.id);
 };
 
 // Calculate the total value of all products in stock
 const calculateTotalStockValue = async () => {
+
     const products = await Product.find();
-    return await products.reduce((acc, product) => acc + product.price * product.amountInStock, 0);
+    return {totalValue:products.reduce((acc, product) => acc + product.price * product.amountInStock, 0)}
+
+
 };
 
 module.exports = { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue };

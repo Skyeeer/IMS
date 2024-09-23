@@ -7,8 +7,8 @@ const express = require('express');
 function restApi(){
     const app = express();
 
-    const productRouter = require("../../db/routes/productRouter");
-    const manufacturerRouter = require("../../db/routes/manufacturerRouter");
+    const productRouter = require("./routes/productRouter");
+    const manufacturerRouter = require("./routes/manufacturerRouter");
 
     const PORT = 3000;
 

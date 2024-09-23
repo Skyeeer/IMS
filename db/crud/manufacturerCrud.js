@@ -7,8 +7,10 @@ const createManufacturer = async (manufacturer) => {
 };
 
 // Find a single manufacturer by its ID
-const findManufacturer = async (id) => {
-    return Manufacturer.findById(id);
+const findManufacturer = async (parent,args) => {
+
+    return Manufacturer.findById(args==undefined?parent:args.id);
+    
 };
 
 // Find all manufacturers

@@ -1,13 +1,13 @@
-const { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../crud/productCrud');
+const { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../../../db/crud/productCrud');
 const express = require('express');
-const { Manufacturer } = require("../models/productModel");
+const { Manufacturer } = require("../../../db/models/productModel");
 const router = express.Router();
 
 //Get total value of all products in stock
 router.get('/total-value', async (req, res) => {
     try {
         const totalValue = await calculateTotalStockValue();
-        res.status(200).json({ totalValue });
+        res.status(200).json(totalValue);
     } catch (err) {
         res.status(500).json({ message: 'Error calculating total value of stock' });
     }

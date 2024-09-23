@@ -9,7 +9,14 @@ const resolvers = {
         findTotalValueByManufacturer,
         findManufacturer,
         calculateTotalStockValue
+        
+    },
+    Mutation:{
+        deleteProduct,
+        createProduct,
+        updateProduct
     }
+
 }
 
 module.exports = {resolvers};

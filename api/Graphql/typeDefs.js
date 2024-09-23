@@ -39,6 +39,30 @@ const typeDefs = `#graphql
         findTotalValueByManufacturer:[totalValueByManufacturer]
         calculateTotalStockValue: totalValue
     }
+
+    type Mutation{
+        deleteProduct(id:ID!):product
+        createProduct(newProduct:createProduct!):product
+        updateProduct(id:ID!,updates:updateProduct!):product
+    }
+    input createProduct{
+        name:String!,
+        sku: String!,
+        description: String!,
+        price: Float!,
+        category: String!,
+        manufacturer: ID!,
+        amountInStock: Int!
+    }
+    input updateProduct{
+        name:String,
+        sku: String,
+        description: String,
+        price: Float,
+        category: String,
+        manufacturer: ID,
+        amountInStock: Int
+    }
    
 `
 

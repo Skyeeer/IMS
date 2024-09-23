@@ -14,7 +14,9 @@ const resolvers = {
     Mutation:{
         deleteProduct,
         createProduct,
-        updateProductql
+        updateProductql,
+        createManufacturer,
+        deleteManufacturer
     }
 
 }

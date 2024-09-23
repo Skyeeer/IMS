@@ -64,7 +64,6 @@ const updateProduct = async (id, product) => {
 };
 // Update an existing product by its ID graphql
 const updateProductql = async (parent, args) => {
-    console.log(args)
     return await Product.findByIdAndUpdate(args.id, args.updates, { new: true }).populate('manufacturer');
    
 };

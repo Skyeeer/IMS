@@ -43,7 +43,7 @@ const typeDefs = `#graphql
     type Mutation{
         deleteProduct(id:ID!):product
         createProduct(newProduct:createProduct!):product
-        updateProduct(id:ID!,updates:updateProduct!):product
+        updateProductql(id:ID!,updates:updateProductql!):product
     }
     input createProduct{
         name:String!,
@@ -54,7 +54,7 @@ const typeDefs = `#graphql
         manufacturer: ID!,
         amountInStock: Int!
     }
-    input updateProduct{
+    input updateProductql{
         name:String,
         sku: String,
         description: String,

@@ -59,8 +59,14 @@ const findTotalValueByManufacturer = async () => {
 };
 
 // Update an existing product by its ID 
-const updateProduct = async (parent, args) => {
-    return await Product.findByIdAndUpdate(typeof parent==String?parent:args.id, typeof parent==String?args:args.product, { new: true }).populate('manufacturer');
+const updateProduct = async (id, product) => {
+    return await Product.findByIdAndUpdate(id, product, { new: true }).populate('manufacturer');
+};
+// Update an existing product by its ID graphql
+const updateProductql = async (parent, args) => {
+    console.log(args)
+    return await Product.findByIdAndUpdate(args.id, args.updates, { new: true }).populate('manufacturer');
+   
 };
 
 // Delete a product by its ID
@@ -77,4 +83,4 @@ const calculateTotalStockValue = async () => {
 
 };
 
-module.exports = { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue };
+module.exports = { updateProductql, createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue };

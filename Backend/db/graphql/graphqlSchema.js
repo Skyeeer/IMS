@@ -80,6 +80,13 @@ const RootQuery = new GraphQLObjectType({
         return await findTotalValueByManufacturer();
       }
     },
+    criticalStockProducts: {
+      type: new GraphQLList(ProductType),
+      resolve: async () => {
+        const products = await findLowStockProducts(5);
+        return products;
+      }
+    },
     product: {
       type: ProductType,
       args: { id: { type: GraphQLID } },

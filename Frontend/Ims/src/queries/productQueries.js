@@ -34,9 +34,9 @@ product(id: $id) {
 }
 }
     `;
-export const GET_PRODUCT_BY_MANUFACTURER = gql`
+export const GET_PRODUCTS_BY_MANUFACTURER = gql`
 query getProductsByManufacturer($manufacturerId: ID!) {
-    products(manufacturerId: $manufacturerId) {
+    productsByManufacturer(manufacturerId: $manufacturerId) {
     id
     name
     category
@@ -49,4 +49,21 @@ query getProductsByManufacturer($manufacturerId: ID!) {
     amountInStock
     }
 }
+`;
+
+export const GET_LOW_STOCK_PRODUCTS = gql`
+  query lowStockProducts($limit: Int!) {
+    lowStockProducts(limit: $limit) {
+      id
+      name
+      category
+      sku
+      description
+      price
+      amountInStock
+      manufacturer {
+        name
+      }
+    }
+  }
 `;

@@ -1,7 +1,7 @@
 
 const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLList, GraphQLID, GraphQLNonNull } = require('graphql');
 const { GraphQLInputObjectType } = require('graphql');
-const { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../crud/productCrud');
+const { createProduct, findProduct, findProducts, findProductsByManufacturer, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../crud/productCrud');
 const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer } = require('../crud/manufacturerCrud');
 const { Manufacturer } = require('../models/productModel');
 
@@ -91,6 +91,21 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(ProductType),
       resolve: async () => {
         return await findProducts();
+      }
+    },
+    productsByManufacturer: {
+      type: new GraphQLList(ProductType),
+      args: {
+        manufacturerId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve: async (_, { manufacturerId }) => {
+        try {
+          // Проверка, применен ли фильтр
+          console.log("Filtering products by manufacturerId:", manufacturerId);
+          return await findProductsByManufacturer({ manufacturer: manufacturerId });
+        } catch (error) {
+          throw new Error(`Error fetching products by manufacturer: ${error.message}`);
+        }
       }
     },
     manufacturers: {

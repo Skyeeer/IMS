@@ -3,6 +3,9 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    width: 85%;
+    flex-wrap: wrap;
+    margin: 0 auto;
   }
   .products-list-item {
     width: 200px;
@@ -16,4 +19,11 @@
     background-color:transparent;
     color: white;
     border: 1px solid gray;
+  }
+  .selectedButton {
+    background-color: #4c81af;
+    color: white;
+  }
+  .lowStock {
+    margin-left: 30px;
   }

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries';
 import { GET_PRODUCTS_BY_MANUFACTURER, GET_ALL_PRODUCTS } from '../queries/productQueries';
 import styles from '../styles/Products.module.css';
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
   const [selectedManufacturerId, setSelectedManufacturerId] = useState(null);
@@ -40,12 +41,18 @@ const ProductList = () => {
           <h2>Filtered products</h2>
           <ul className={styles['products-list']}>
             {filterData.productsByManufacturer.map((product) => (
+              <Link
+              key={product.id}
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/products/${product.id}`}
+            >
               <li className={styles['products-list-item']} key={product.id}>
                 <p><strong>{product.name}</strong></p>
                 <p>Price: {product.price} $</p>
                 <p>Category: {product.category}</p>
                 <p>Manufacturer: {product.manufacturer.name}</p>
               </li>
+              </Link>
             ))}
           </ul>
         </div>
@@ -62,12 +69,18 @@ const ProductList = () => {
           <h2>All Products</h2>
           <ul className={styles['products-list']}>
             {allData.products.map((product) => (
+              <Link
+              key={product.id}
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/products/${product.id}`}
+            >
               <li className={styles['products-list-item']} key={product.id}>
                 <p><strong>{product.name}</strong></p>
                 <p>Price: {product.price} $</p>
                 <p>Category: {product.category}</p>
                 <p>Manufacturer: {product.manufacturer.name}</p>
               </li>
+              </Link>
             ))}
           </ul>
         </div>

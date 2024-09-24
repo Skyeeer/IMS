@@ -2,8 +2,11 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries';
 import { CREATE_PRODUCT } from '../mutations/productMutation';
+import { useNavigate } from 'react-router-dom';
 
 const ProductForm = () => {
+  const navigate = useNavigate();
+
   const { data: manufacturersData, loading: manufacturersLoading, error: manufacturersError } = useQuery(GET_ALL_MANUFACTURERS);
   const [createProduct, { loading: createProductLoading, error: createProductError }] = useMutation(CREATE_PRODUCT);
 
@@ -52,6 +55,7 @@ const ProductForm = () => {
       setSelectedManufacturer("");
       setErrors([]);
       console.log("Product created:", data.createProduct);
+      navigate("/products");
     } catch (err) {
       console.error("Error creating product:", err.message);
       setErrors([err.message]);
@@ -60,6 +64,7 @@ const ProductForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Create new product</h2>
       {errors.length > 0 && (
         <div className="error-messages">
           {errors.map((error, index) => (
@@ -69,15 +74,18 @@ const ProductForm = () => {
       )}
       <div>
         <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input style={{padding: "5px", marginLeft: "15px"}} 
+        type="text" value={name} onChange={(e) => setName(e.target.value)} required />
       </div>
       <div>
         <label>SKU:</label>
-        <input type="text" value={sku} onChange={(e) => setSku(e.target.value)} required />
+        <input style={{padding: "5px", marginLeft: "15px"}}
+        type="text" value={sku} onChange={(e) => setSku(e.target.value)} required />
       </div>
       <div>
         <label>Category:</label>
-        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
+        <input style={{padding: "5px", marginLeft: "15px"}} 
+        type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
       </div>
       <div>
         <label>Description:</label>
@@ -89,7 +97,7 @@ const ProductForm = () => {
       </div>
       <div>
         <label>Price:</label>
-        <input
+        <input style={{padding: "5px", marginLeft: "15px"}}
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -99,7 +107,7 @@ const ProductForm = () => {
       </div>
       <div>
         <label>Amount:</label>
-        <input
+        <input style={{padding: "5px", marginLeft: "15px"}}
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}

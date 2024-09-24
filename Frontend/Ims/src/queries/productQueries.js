@@ -34,9 +34,9 @@ product(id: $id) {
 }
 }
     `;
-export const GET_PRODUCT_BY_MANUFACTURER = gql`
+export const GET_PRODUCTS_BY_MANUFACTURER = gql`
 query getProductsByManufacturer($manufacturerId: ID!) {
-    products(manufacturerId: $manufacturerId) {
+    productsByManufacturer(manufacturerId: $manufacturerId) {
     id
     name
     category

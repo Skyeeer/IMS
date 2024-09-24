@@ -46,6 +46,7 @@ const typeDefs = `#graphql
         createProduct(newProduct:createProduct!):product
         createManufacturer(newManufacturer:createManufacturer!):manufacturer
         updateProductql(id:ID!,updates:updateProductql!):product
+        updateManufacturerql(id:ID!,updates:updateManufacturerql!):manufacturer
     }
     input createProduct{
         name:String!,
@@ -66,9 +67,9 @@ const typeDefs = `#graphql
         contact: createContact!
     }
     input createContact{
-        name: String!,
-        email:String!,
-        phone:Int!
+        name: String,
+        email:String,
+        phone:String
     }
     input updateProductql{
         name:String,
@@ -78,6 +79,14 @@ const typeDefs = `#graphql
         category: String,
         manufacturer: ID,
         amountInStock: Int
+    }
+    input updateManufacturerql{
+        name: String,
+        country: String,
+        website: String,
+        description: String,
+        address: String,
+        contact: createContact
     }
    
 `

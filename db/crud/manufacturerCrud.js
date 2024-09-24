@@ -23,6 +23,9 @@ const findManufacturers = async () => {
 const updateManufacturer = async (id, manufacturer) => {
     return Manufacturer.findByIdAndUpdate(id, manufacturer, { new: true });
 };
+const updateManufacturerql = async (parent, args) => {
+    return Manufacturer.findByIdAndUpdate(args.id, args.updates, { new: true });
+};
 
 // Delete a manufacturer by its ID
 const deleteManufacturer = async (parent,args) => {
@@ -30,4 +33,4 @@ const deleteManufacturer = async (parent,args) => {
 };
 
 
-module.exports = { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer };
+module.exports = { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer,updateManufacturerql };

@@ -1,5 +1,5 @@
 const { createProduct, findProduct, findProducts, updateProductql, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue } = require('../../db/crud/productCrud');
-const { createManufacturer, findManufacturer, findManufacturers, updateManufacturer, deleteManufacturer }= require('../../db/crud/manufacturerCrud');
+const { createManufacturer, findManufacturer, findManufacturers, updateManufacturerql, deleteManufacturer }= require('../../db/crud/manufacturerCrud');
 const resolvers = {
     Query:{
         findProducts,
@@ -16,7 +16,8 @@ const resolvers = {
         createProduct,
         updateProductql,
         createManufacturer,
-        deleteManufacturer
+        deleteManufacturer,
+        updateManufacturerql
     }
 
 }

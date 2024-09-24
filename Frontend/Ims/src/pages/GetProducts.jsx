@@ -29,27 +29,27 @@ const ProductList = () => {
     }
 
     return (
-      <div>
+      <div classname={styles["products-window"]}>
         <h2>Product List</h2>
         <ul className={styles["products-list"]}>
           {data.products.map((product) => (
-            <Link style={{textDecoration: "none", color: "white"}} to={`/products/${product.id}`}>
-            <li className={styles["products-list-item"]} key={product.id}>
-              <p><strong>{product.name}</strong></p>
-              <p>Price: {product.price} $</p>
-              <p>Category: {product.category}</p>
-              <p>Manufacturer: {product.manufacturer.name}</p>
-              
-            </li>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/products/${product.id}`}>
+              <li className={styles["products-list-item"]} key={product.id}>
+                <p><strong>{product.name}</strong></p>
+                <p>Price: {product.price} $</p>
+                <p>Category: {product.category}</p>
+                <p>Manufacturer: {product.manufacturer.name}</p>
+
+              </li>
             </Link>
           ))}
         </ul>
 
         <Link to="/">
-        <button>Back</button>
+          <button>Back</button>
         </Link>
       </div>
-      
+
     );
   };
 

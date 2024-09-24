@@ -1,19 +1,52 @@
 .products-list {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  .products-list-item {
-    width: 200px;
-    padding: 10px;
-    background-color: #888888;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    color: rgb(13, 13, 37);
-  }
-  .products-list-item:hover {
-    background-color:transparent;
-    color: white;
-    border: 1px solid gray;
-  }
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 70vw;
+  padding-top: 40px;
+}
+
+.products-list-item {
+  width: 220px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #333333;
+  text-align: left;
+}
+
+.products-list-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #222;
+  font-weight: bold;
+}
+
+.products-list-item p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #666666;
+}
+
+.products-list-item:hover {
+  background-color: #fff;
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.products-list-item:hover p {
+  color: #000;
+}
+
+.products-window {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

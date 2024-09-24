@@ -2,6 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries';
 import { CREATE_PRODUCT } from '../mutations/productMutation';
+import styles from "../styles/CreateProduct.module.css"
 
 const ProductForm = () => {
   const { data: manufacturersData, loading: manufacturersLoading, error: manufacturersError } = useQuery(GET_ALL_MANUFACTURERS);
@@ -59,59 +60,88 @@ const ProductForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles['form-container']} onSubmit={handleSubmit}>
       {errors.length > 0 && (
-        <div className="error-messages">
+        <div className={styles['error-message']}>
           {errors.map((error, index) => (
             <p key={index}>{error}</p>
           ))}
         </div>
       )}
-      <div>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-      </div>
-      <div>
-        <label>SKU:</label>
-        <input type="text" value={sku} onChange={(e) => setSku(e.target.value)} required />
-      </div>
-      <div>
-        <label>Category:</label>
-        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
-      </div>
-      <div>
-        <label>Description:</label>
-        <textarea
-          value={description}
-          placeholder="Description of the product"
-          onChange={(e) => setDescription(e.target.value)} required
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Name:</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className={styles['form-group input']}
         />
       </div>
-      <div>
-        <label>Price:</label>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>SKU:</label>
+        <input
+          type="text"
+          value={sku}
+          onChange={(e) => setSku(e.target.value)}
+          required
+          className={styles['form-group input']}
+        />
+      </div>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Category:</label>
+        <input
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+          className={styles['form-group input']}
+        />
+      </div>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Description:</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          className={styles['form-group textarea']}
+        />
+      </div>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Price:</label>
         <input
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
+          className={styles['form-group input']}
         />
         <span>USD</span>
       </div>
-      <div>
-        <label>Amount:</label>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Amount:</label>
         <input
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           required
+          className={styles['form-group input']}
         />
       </div>
-      <div>
-        <label>Manufacturer:</label>
+
+      <div className={styles['form-group']}>
+        <label className={styles['form-group label']}>Manufacturer:</label>
         <select
           value={selectedManufacturer}
           onChange={(e) => setSelectedManufacturer(e.target.value)}
           required
+          className={styles['form-group select']}
         >
           <option value="">Select a manufacturer</option>
           {manufacturers.map((manufacturer) => (
@@ -122,13 +152,17 @@ const ProductForm = () => {
         </select>
       </div>
 
-      <div>
-        <button type="submit" disabled={createProductLoading}>
+      <div className={styles['form-group']}>
+        <button
+          type="submit"
+          disabled={createProductLoading}
+          className={styles['submit-button']}
+        >
           {createProductLoading ? "Creating..." : "Create Product"}
         </button>
       </div>
 
-      {createProductError && <p>Error: {createProductError.message}</p>}
+      {createProductError && <p className={styles['error-message']}>Error: {createProductError.message}</p>}
     </form>
   );
 };

@@ -46,7 +46,7 @@ const ProductType = new GraphQLObjectType({
     description: { type: GraphQLString },
     category: { type: GraphQLString },
     amountInStock: { type: GraphQLInt },
-    price: { type: GraphQLFloat },
+    price: { type: GraphQLString },
     manufacturer: { type: ManufacturerType }
   })
 });
@@ -121,7 +121,7 @@ const Mutation = new GraphQLObjectType({
         category: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
         amountInStock: { type: new GraphQLNonNull(GraphQLInt) },
-        price: { type: new GraphQLNonNull(GraphQLFloat) },
+        price: { type: new GraphQLNonNull(GraphQLString) },
         manufacturer: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve: async (_, { name, sku, category, description, amountInStock, price, manufacturer }) => {
@@ -143,7 +143,7 @@ const Mutation = new GraphQLObjectType({
         category: { type: GraphQLString },
         description: { type: GraphQLString },
         amountInStock: { type: GraphQLInt },
-        price: { type: GraphQLFloat },
+        price: { type: GraphQLString },
         manufacturer: { type: GraphQLID }
       },
       resolve: async (_, { id, ...updateData }) => {

@@ -50,3 +50,20 @@ query getProductsByManufacturer($manufacturerId: ID!) {
     }
 }
 `;
+
+export const GET_LOW_STOCK_PRODUCTS = gql`
+  query lowStockProducts($limit: Int!) {
+    lowStockProducts(limit: $limit) {
+      id
+      name
+      category
+      sku
+      description
+      price
+      amountInStock
+      manufacturer {
+        name
+      }
+    }
+  }
+`;

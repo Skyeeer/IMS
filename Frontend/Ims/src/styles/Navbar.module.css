@@ -1,12 +1,18 @@
-.navbar {
+.list {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  width: 60vw;
+  gap: 50px;
+  width: 100vw;
+  margin: 50px auto;
+  list-style: none;
 }
 
-.navbar a {
+.menu-item:hover {
+  border-bottom: 1px solid rgb(47, 93, 149);
+}
+
+.list a {
   font-size: 1.5rem;
   font-weight: 800;
   color: #ffffff;
@@ -16,7 +22,7 @@
   letter-spacing: 1.5px;
 }
 
-.navbar a:hover {
-  background-color: rgb(55, 55, 55);
-  color: rgb(255, 255, 255);
+.list a:hover {
+  background-color: rgb(39, 39, 39);
+  color: white;
 }

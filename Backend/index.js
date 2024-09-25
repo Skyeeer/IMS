@@ -8,8 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//const productRouter = require("./db/routes/productRouter");
-//const manufacturerRouter = require("./db/routes/manufacturerRouter");
+const productRouter = require("./db/routes/productRouter");
+const manufacturerRouter = require("./db/routes/manufacturerRouter");
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,8 +29,8 @@ app.use(
   })
 );
 
-/*app.use("/products", productRouter);
-app.use("/manufacturers", manufacturerRouter);*/
+app.use("/products", productRouter);
+app.use("/manufacturers", manufacturerRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");

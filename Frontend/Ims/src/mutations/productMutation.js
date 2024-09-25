@@ -4,7 +4,7 @@ export const CREATE_PRODUCT = gql`
     mutation createProduct(
     $name: String!, 
     $sku: String!,
-    $price: Float!,
+    $price: String!,
     $description: String!,
     $category: String!,
     $amountInStock: Int!,

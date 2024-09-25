@@ -17,7 +17,6 @@ const findProducts = async () => {
 };
 async function findProductsByManufacturer(filter = {}) {
     try {
-      console.log("Applying filter in findProducts:", filter);
       return await Product.find(filter).populate('manufacturer');
     } catch (error) {
       throw new Error(`Error fetching products: ${error.message}`);

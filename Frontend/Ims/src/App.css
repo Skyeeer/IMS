@@ -1,0 +1,24 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+}
+textarea {
+  width: 250px;
+  height: 100px;
+  margin-left: 15px;
+}
+
+
+

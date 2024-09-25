@@ -15,6 +15,13 @@ const findProduct = async (id) => {
 const findProducts = async () => {
     return Product.find().populate('manufacturer');
 };
+async function findProductsByManufacturer(filter = {}) {
+    try {
+      return await Product.find(filter).populate('manufacturer');
+    } catch (error) {
+      throw new Error(`Error fetching products: ${error.message}`);
+    }
+  }
 
 //Find products with less than a certain amount in stock
 const findLowStockProducts = async (threshold) => {
@@ -70,4 +77,4 @@ const calculateTotalStockValue = async () => {
     return products.reduce((acc, product) => acc + product.price * product.amountInStock, 0);
 };
 
-module.exports = { createProduct, findProduct, findProducts, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue };
+module.exports = { createProduct, findProduct, findProducts, findProductsByManufacturer, updateProduct, deleteProduct, findLowStockProducts, findTotalValueByManufacturer, calculateTotalStockValue };

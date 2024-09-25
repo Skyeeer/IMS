@@ -5,10 +5,12 @@ export default function Navbar() {
 
     return (
         <nav className={styles.navbar}>
-            <Link to="/">Home</Link>
-            <Link to="/products">Shop</Link>
-            <Link to="/manufacturers">Brands</Link>
-            <Link to="/createproduct">New Product</Link>
+            <ul className={styles.list}>
+            <Link to="/"><li className={styles["menu-item"]}>Home</li></Link>
+            <Link to="/products"><li className={styles["menu-item"]}>Shop</li></Link>
+            <Link to="/manufacturers"><li className={styles["menu-item"]}>Brands</li></Link>
+            <Link to="/createproduct"><li className={styles["menu-item"]}>New Product</li></Link>
+            </ul>
         </nav>
     )
 }

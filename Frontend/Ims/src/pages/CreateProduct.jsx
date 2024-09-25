@@ -2,9 +2,12 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { GET_ALL_MANUFACTURERS } from '../queries/manufacturerQueries';
 import { CREATE_PRODUCT } from '../mutations/productMutation';
+import { useNavigate } from 'react-router-dom';
 import styles from "../styles/CreateProduct.module.css"
 
 const ProductForm = () => {
+  const navigate = useNavigate();
+
   const { data: manufacturersData, loading: manufacturersLoading, error: manufacturersError } = useQuery(GET_ALL_MANUFACTURERS);
   const [createProduct, { loading: createProductLoading, error: createProductError }] = useMutation(CREATE_PRODUCT);
 
@@ -53,6 +56,7 @@ const ProductForm = () => {
       setSelectedManufacturer("");
       setErrors([]);
       console.log("Product created:", data.createProduct);
+      navigate("/products");
     } catch (err) {
       console.error("Error creating product:", err.message);
       setErrors([err.message]);
@@ -61,6 +65,7 @@ const ProductForm = () => {
 
   return (
     <form className={styles['form-container']} onSubmit={handleSubmit}>
+      <h2>Create new product</h2>
       {errors.length > 0 && (
         <div className={styles['error-message']}>
           {errors.map((error, index) => (
